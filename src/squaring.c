@@ -20,18 +20,22 @@ int main() {
 }
 
 void input(int *a, int *n, int *flag) {
-    scanf("%d", n);
+    int z;
+    if (scanf("%d.%d", n, &z) != 1) {
+        *flag = 1;
+    }
     for (int *p = a; p - a < *n; p++) {
-        if (scanf("%d", p) != 1) {
+        if (scanf("%d.%d", p, &z) != 1) {
             *flag = 1;
         }
     }
 }
 
 void output(int *a, int n) {
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n - 1; i++) {
         printf("%d ", *(a + i));
     }
+    printf("%d", *(a + n - 1));
 }
 
 void squaring(int *a, int n) {

@@ -4,8 +4,8 @@ void maxmin(int *prob1, int *prob2, int *prob3, int *max, int *min);
 
 /* Find a max & min probabilities */
 int main() {
-    int x, y, z;
-    if (scanf("%d %d %d", &x, &y, &z) != 3) {
+    int x, y, z, t;
+    if (scanf("%d %d %d.%d", &x, &y, &z, &t) != 3) {
         printf("n/a");
     } else {
         int max, min;
