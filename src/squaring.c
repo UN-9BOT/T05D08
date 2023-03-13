@@ -1,37 +1,41 @@
 #include <stdio.h>
 #define NMAX 10
 
-int input(int *a, int *n);
+void input(int *a, int *n, int *flag);
 void output(int *a, int n);
 void squaring(int *a, int n);
 
-int main()
-{
+int main() {
     int n, data[NMAX];
-    input(data, n);
-    squaring(data, n);
-    output(data, n);
+    int flag = 0;
+    input(data, &n, &flag);
+    if (flag == 1) {
+        printf("n/a");
+    } else {
+        squaring(data, n);
+        output(data, n);
+    }
 
     return 0;
 }
 
-int input(int *a, int *n)
-{
+void input(int *a, int *n, int *flag) {
     scanf("%d", n);
-    for(int *p = a; p - a < *n; p++)
-    {
-        scanf("%d", p);
+    for (int *p = a; p - a < *n; p++) {
+        if (scanf("%d", p) != 1) {
+            *flag = 1;
+        }
     }
 }
 
-void output(int *a, int n)
-{
-    //NOTHING
+void output(int *a, int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%d ", *(a + i));
+    }
 }
 
-void squaring(int *a, int n)
-{
-    //NOTHING
+void squaring(int *a, int n) {
+    for (int i = 0; i < n; i++) {
+        *(a + i) = *(a + i) * *(a + i);
+    }
 }
-
-
