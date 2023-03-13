@@ -26,10 +26,10 @@ int main() {
 
 void input(int *a, int *n, int *flag) {
     int z;
-    if (scanf("%d.%d", n, &z) != 1) {
+    if (scanf("%d.%d", n, &z) != 1 || *n <= 0 || *n > NMAX) {
         *flag = 1;
     }
-    for (int *p = a; p - a < *n; p++) {
+    for (int *p = a; (p - a < *n) && (*flag == 0); p++) {
         if (scanf("%d.%d", p, &z) != 1) {
             *flag = 1;
         }
