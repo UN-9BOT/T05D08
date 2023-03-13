@@ -1,5 +1,5 @@
-#include <stdio.h> 
 #include <math.h>
+#include <stdio.h>
 
 #define NMAX 30
 
@@ -11,17 +11,17 @@ double variance(int *, int);
 int check(int *, int);
 
 int main(void) {
-   int n, data[NMAX], flag;
+    int n, data[NMAX], flag;
 
-   flag = 0;
-   input(data, &n, &flag);
-   if (flag == 1) {
-       printf("n/a");
-   } else {
-       printf("%i", check(data, n));
-   }
+    flag = 0;
+    input(data, &n, &flag);
+    if (flag == 1) {
+        printf("n/a");
+    } else {
+        printf("%i", check(data, n));
+    }
 
-   return (0);
+    return (0);
 }
 
 void input(int *a, int *n, int *flag) {
@@ -76,36 +76,16 @@ double variance(int *a, int n) {
     return (res / n);
 }
 
-double deviation(int *a, int n) {
-    return (mean(a, n) + (3 * sqrt(variance(a, n))));
-}
+double deviation(int *a, int n) { return (mean(a, n) + (3 * sqrt(variance(a, n)))); }
 
 int check(int *a, int n) {
     int res = *a;
     for (int i = 0; i < n; i++) {
         if (*(a + i) % 2 == 0 && *(a + i) != 0) {
-            printf("%i >= %lf && %i <= %lf\n", *(a + 1), mean(a, n), *(a + 1), deviation(a, n));
-            if (((double)*(a + i) >= mean(a, n)) && ((double)*(a + i) <= deviation(a, n))) {
-                return (*(a + 1));
+            if (((double)*(a + i)) >= ((double)mean(a, n)) && ((double)*(a + i) <= (double)deviation(a, n))) {
+                res = *(a + i);
             }
         }
     }
-    return (0);
+    return (res);
 }
-
-/*
-    Search module for the desired value from data array.
-
-    Returned value must be:
-        - "even"
-        - ">= mean"
-        - "<= mean + 3 * sqrt(variance)"
-        - "!= 0"
-
-        OR
-
-        0
-*/
-
-
-
