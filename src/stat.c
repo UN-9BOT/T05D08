@@ -15,9 +15,12 @@ int main() {
 
     flag = 0;
     input(data, &n, &flag);
-    output(data, n);
-    output_result(max(data, n), min(data, n), mean(data, n), variance(data, n));
-
+    if (flag == 1) {
+        printf("n/a");
+    } else {
+        output(data, n);
+        output_result(max(data, n), min(data, n), mean(data, n), variance(data, n));
+    }
     return 0;
 }
 
